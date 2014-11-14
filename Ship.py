@@ -2,7 +2,7 @@
 
 import pygame, sys
 
-class Ship:
+class Ship: 
     def __init__(self, windowX, windowY):
         self.posX = 100 # X position of sprite
         self.posY = 100 # Y position of sprite
@@ -11,6 +11,7 @@ class Ship:
         self.window_X = windowX # window size X
         self.window_Y = windowY # window size Y
         self.playerRect = pygame.Rect(100,100, 32,32) # creates a rectangle object 
+        #self.entities= []
         
     def moveDown (self, dist, time):
         self.posY += (dist * time)
@@ -46,6 +47,6 @@ class Ship:
             self.playerRect = self.playerRect.move((self.window_X - self.sizeX) - self.posX,0)
             self.posX = self.window_X - self.sizeX
             
-    # 
-    def update(self):
+    #def AI_move1() 
+    #def update(self):
         #self.moveDown(1,1)
