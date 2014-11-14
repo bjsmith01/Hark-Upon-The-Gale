@@ -26,11 +26,12 @@ moveDown = False
 while playingGame:
 
     for event in pygame.event.get(): # poll for key presses
+        if event.type == QUIT:
+            pygame.quit()
+            playingGame = False
+            sys.exit()
+        
         if event.type == KEYUP:
-            if event.key == K_ESCAPE: # if the user hits escape quit the game
-                pygame.quit()
-                playingGame = False
-                sys.exit()
             if event.key == K_DOWN:
                 moveDown = False
             if event.key == K_UP:
@@ -39,6 +40,7 @@ while playingGame:
                 moveLeft = False
             if event.key == K_RIGHT:
                 moveRight = False
+        
         if event.type == KEYDOWN:
             if event.key == K_DOWN:
                 moveDown = True
