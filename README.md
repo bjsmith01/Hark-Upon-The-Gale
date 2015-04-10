@@ -1,7 +1,4 @@
 Hark-Upon-The-Gale
 ==================
 
--Testing
-
-
-WM Game Design Club Project
+-The current working directory is UnityProject/ShooterTest
