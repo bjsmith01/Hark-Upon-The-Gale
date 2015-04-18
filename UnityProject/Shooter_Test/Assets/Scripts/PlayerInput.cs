@@ -4,6 +4,8 @@
  * Enables simple movement along the 2D plane through keyboard (or gamepad) input.
  * This works using this object's Rigidbody2D so as to work with Unity's collisions
  * system. 
+ *
+ * It also controls the player's shooting abilities, spawning bullets when Fire1 is pressed.
  * 
  */
 
