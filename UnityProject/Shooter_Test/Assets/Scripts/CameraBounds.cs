@@ -1,38 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 /// <summary>
-/// Camera Bounds
-/// This script's main attraction is CameraBound, a property that basically provides
-/// a bounding box for the camera.  The box has a depth of 1.
+/// Provides a bounding box for the camera, CameraBound.
 /// 
-/// Currently, the box updates with the camera's position, but it's a bit expensive to
-/// recalculate the bounds when it scales.  Keep that in mind.
+/// The camera must be orthogonal.  It can be resized, but doesn't work quite perfectly
+/// with rotation.
 /// </summary>
+
 public class CameraBounds : MonoBehaviour
 {
 
     private Bounds cameraBound;        // The Camera's world-coordinate bounds.
-    private Camera thisCamera;         // The Camera component to be tracked.
+    private Camera theCamera;         // The Camera component to be tracked.
     private float oldOrthographicSize; // Used to see if the camera has changed size.
 
-    // Use this for initialization
+    // Initializes the camera and thisCamera
     void Start()
     {
-        thisCamera = GetComponent<Camera>();
+        theCamera = GetComponent<Camera>();
         cameraBound = new Bounds();
         RecalculateBounds();
     }
 
-    // This uses lazy evaluation to keep costs down.
-    // Intensive re-calculation is only performed when necessary.
+    // cameraBound is recalculated only if the size is changed;
+    // otherwise, it's just the position.
     public Bounds CameraBound
     {
         get
         {
-            if (thisCamera.orthographicSize != oldOrthographicSize)
+            if (theCamera.orthographicSize != oldOrthographicSize)
             {
                 RecalculateBounds();
-                oldOrthographicSize = thisCamera.orthographicSize;
+                oldOrthographicSize = theCamera.orthographicSize;
             }
             else
             {
@@ -42,13 +41,12 @@ public class CameraBounds : MonoBehaviour
         }
     }
 
-    // This completely recalculates the bounds of the camera.
-    // Ideally, it's only called when the size is changed.
+    // Fully recalculates cameraBound.
     private void RecalculateBounds()
     {
         Vector3 cameraMin, cameraMax;
-        cameraMin = thisCamera.ViewportToWorldPoint(Vector3.zero);
-        cameraMax = thisCamera.ViewportToWorldPoint(Vector3.one);
+        cameraMin = theCamera.ViewportToWorldPoint(Vector3.zero);
+        cameraMax = theCamera.ViewportToWorldPoint(Vector3.one);
         cameraBound.SetMinMax(cameraMin, cameraMax);
     }
 

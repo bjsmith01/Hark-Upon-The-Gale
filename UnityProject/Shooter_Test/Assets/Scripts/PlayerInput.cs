@@ -20,6 +20,7 @@ public class PlayerInput : MonoBehaviour
 
     public GameObject shot; // holds instance of bullet
     public Transform shotSpawn;  //spawner for shots
+    public CameraBounds shotDestroyingCamera; //Destroys bullets when they leave the screen
 
     public float fireRate; //how fast shot is fired
     private float nextFire;  // how long to wait until next shot
@@ -36,7 +37,8 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            GameObject bullet = (GameObject)Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            bullet.GetComponent<DestroyOutsideCamera>().camBounds = shotDestroyingCamera;
         }
 
     }

@@ -5,15 +5,10 @@ using System.Collections;
 public class BindToCamera : MonoBehaviour
 {
 
-    private CameraBounds camBinder;
-
-    void Start()
-    {
-        camBinder = Camera.main.GetComponent<CameraBounds>();
-    }
+    public CameraBounds camBounds;
 
     void Update()
     {
-        transform.position = camBinder.CameraBound.ClosestPoint(transform.position);
+        transform.position = camBounds.CameraBound.ClosestPoint(transform.position);
     }
 }
