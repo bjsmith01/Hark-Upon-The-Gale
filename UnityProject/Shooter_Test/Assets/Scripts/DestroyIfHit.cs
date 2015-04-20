@@ -16,11 +16,21 @@ public class DestroyIfHit : MonoBehaviour
         healthScript = GetComponent<ShipHealth>();
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        
+        Debug.Log(other.name);
+        Destroy(other.gameObject);
+        Destroy(gameObject);
+
+    }
+    /*
     // Update is called once per frame
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == dangerTag)
-            healthScript.takeDamage(healthScript.maxHealth);
-    }
+        Debug.Log("HI");
+        //if (other.gameObject.tag == dangerTag)
+          //  healthScript.takeDamage(healthScript.maxHealth);
+    }*/
 
 }
