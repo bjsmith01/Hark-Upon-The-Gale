@@ -15,9 +15,4 @@ public class BulletLogic : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0); // moves the bullet in a straight line
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

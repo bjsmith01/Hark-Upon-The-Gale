@@ -48,10 +48,6 @@ public class PlayerInput : MonoBehaviour
     {
         Vector2 moveDim = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         moveDim.Scale(movementSpeed);
-        //transform.Translate(moveDim * Time.deltaTime);
         theRigidbody.velocity = moveDim;
     }
-
-
-
 }

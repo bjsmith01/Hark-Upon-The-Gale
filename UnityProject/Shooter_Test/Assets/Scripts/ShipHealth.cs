@@ -43,12 +43,6 @@ public class ShipHealth : MonoBehaviour
         Health -= amount;
     }
 
-    //Restore health to the ship (not above its maximmum health)
-    public void giveHealth(int amount)
-    {
-        Health += amount;
-    }
-
     //Called when the ship runs out of health
     void onNoHealth()
     {

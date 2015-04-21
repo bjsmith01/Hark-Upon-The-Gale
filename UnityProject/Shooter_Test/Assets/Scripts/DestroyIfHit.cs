@@ -8,19 +8,22 @@ public class DestroyIfHit : MonoBehaviour
 
     public string dangerTag;
 
-    private ShipHealth healthScript;
+    //private ShipHealth healthScript;
 
     // Use this for initialization
     void Start()
     {
-        healthScript = GetComponent<ShipHealth>();
+        //healthScript = GetComponent<ShipHealth>();
     }
 
     // Update is called once per frame
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == dangerTag)
-            healthScript.takeDamage(healthScript.maxHealth);
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
     }
 
 }

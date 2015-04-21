@@ -56,12 +56,12 @@
      <Compile Include="Assets\Done\Done_Scripts\Done_PlayerController.cs" />
      <Compile Include="Assets\Done\Done_Scripts\Done_RandomRotator.cs" />
      <Compile Include="Assets\Done\Done_Scripts\Done_WeaponController.cs" />
-     <Compile Include="Assets\Scripts\BindToCamera.cs" />
      <Compile Include="Assets\Scripts\BulletLogic.cs" />
-     <Compile Include="Assets\Scripts\CameraBounds.cs" />
+     <Compile Include="Assets\Scripts\Camera\BindToCamera.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraBounds.cs" />
+     <Compile Include="Assets\Scripts\Camera\DestroyOutsideCamera.cs" />
      <Compile Include="Assets\Scripts\ConstantMovement.cs" />
      <Compile Include="Assets\Scripts\DestroyIfHit.cs" />
-     <Compile Include="Assets\Scripts\DestroyOutsideCamera.cs" />
      <Compile Include="Assets\Scripts\PlayerInput.cs" />
      <Compile Include="Assets\Scripts\ShipHealth.cs" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
