@@ -22,6 +22,7 @@ public class PlayerInput : MonoBehaviour
     public Transform shotSpawn;  //spawner for shots
 
     public float fireRate; //how fast shot is fired
+    public CameraBounds onScreenCamera; // bullets are destroyed when they leave the screen
     private float nextFire;  // how long to wait until next shot
 
     private Rigidbody2D theRigidbody;
@@ -36,20 +37,15 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            GameObject bullet = (GameObject)Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            bullet.GetComponent<DestroyOffscreen>().cameraBounds = onScreenCamera;
         }
-
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         Vector2 moveDim = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         moveDim.Scale(movementSpeed);
-        //transform.Translate(moveDim * Time.deltaTime);
         theRigidbody.velocity = moveDim;
     }
-
-
-
 }
